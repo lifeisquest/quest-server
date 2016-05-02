@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 import org.joda.time.LocalDateTime;
+import org.springframework.data.annotation.CreatedDate;
 
 /**
  * @author Steven Jee
@@ -35,6 +36,7 @@ public class Quest {
   private String completion_location;
   private String img1;
   private String img2;
+  @CreatedDate
   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyyMMdd", timezone="Asia/Seoul")
   private DateTime s_time;
   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyyMMdd", timezone="Asia/Seoul")

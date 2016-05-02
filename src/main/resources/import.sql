@@ -1,2 +1,4 @@
 -- insert into user(email, password) values ('test1', 'test1');
 -- insert into user(email, password) values ('test2', 'test2');
+-- insert into quest(title, writer, body, reward) values ('짐 좀 들어주세요!', '컴공학생', '충무관에서 책상 옮겨 주실분을 구합니다.', 5000);
+-- insert into quest(title, writer, body, reward) values ('떡볶이 사다주실분', '경영학과대장', '조스떡볶이 사다주실 분 구해요.', 3000);

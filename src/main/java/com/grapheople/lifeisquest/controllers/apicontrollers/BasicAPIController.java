@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,6 +32,12 @@ public class BasicAPIController {
   public User getUser(@PathVariable long userId){
     User user = userRepository.findOne(userId);
     return user;
+  }
+
+  @RequestMapping(method = RequestMethod.GET, path = "/api/quest")
+  public List<Quest> getQuests(){
+    List<Quest> quests = questRepository.findAll();
+    return quests;
   }
 
   @RequestMapping(method = RequestMethod.GET, path = "/api/quest/{userId}")
