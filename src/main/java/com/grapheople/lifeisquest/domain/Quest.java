@@ -1,5 +1,6 @@
 package com.grapheople.lifeisquest.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -34,9 +35,9 @@ public class Quest {
   private String completion_location;
   private String img1;
   private String img2;
-//  @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+  @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyyMMdd", timezone="Asia/Seoul")
   private DateTime s_time;
-//  @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+  @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyyMMdd", timezone="Asia/Seoul")
   private DateTime e_time;
   private int reward;
   private int isCompleted;

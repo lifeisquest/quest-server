@@ -2,7 +2,9 @@ package com.grapheople.lifeisquest.controllers.apicontrollers;
 
 import com.google.common.collect.Maps;
 
+import com.grapheople.lifeisquest.dao.QuestRepository;
 import com.grapheople.lifeisquest.dao.UserRepository;
+import com.grapheople.lifeisquest.domain.Quest;
 import com.grapheople.lifeisquest.domain.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,19 @@ public class BasicAPIController {
 
   @Autowired
   private UserRepository userRepository;
+  @Autowired
+  private QuestRepository questRepository;
 
   @RequestMapping(method = RequestMethod.GET, path = "/api/user/{userId}")
   public User getUser(@PathVariable long userId){
     User user = userRepository.findOne(userId);
     return user;
+  }
+
+  @RequestMapping(method = RequestMethod.GET, path = "/api/quest/{userId}")
+  public Quest getQuest(@PathVariable long userId){
+    Quest quest = questRepository.findOne(userId);
+    return quest;
   }
 
 
