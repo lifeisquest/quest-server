@@ -1,15 +1,15 @@
 package com.grapheople.lifeisquest.domain;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
+import org.joda.time.LocalDateTime;
 
 /**
  * @author Steven Jee
@@ -18,6 +18,7 @@ import lombok.ToString;
 @Entity
 @ToString
 @Data
+@Table(name = "quest")
 public class Quest {
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
@@ -33,14 +34,16 @@ public class Quest {
   private String completion_location;
   private String img1;
   private String img2;
-  private DateTime sTime;
-  private DateTime eTime;
+//  @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+  private DateTime s_time;
+//  @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+  private DateTime e_time;
   private int reward;
-  private boolean isCompleted;
+  private int isCompleted;
 
   private Quest() {}
 
-  public Quest(String title, String body, String writer, float action_latitude, float action_longitude, String action_location, float completion_latitude, float completion_longitude, String completion_location, String img1, String img2, DateTime sTime, DateTime eTime, int reward, boolean isCompleted) {
+  public Quest(String title, String body, String writer, float action_latitude, float action_longitude, String action_location, float completion_latitude, float completion_longitude, String completion_location, String img1, String img2, DateTime s_time, DateTime e_time, int reward, int isCompleted) {
     this.title = title;
     this.body = body;
     this.writer = writer;
@@ -52,8 +55,8 @@ public class Quest {
     this.completion_location = completion_location;
     this.img1 = img1;
     this.img2 = img2;
-    this.sTime = sTime;
-    this.eTime = eTime;
+    this.s_time = s_time;
+    this.e_time = e_time;
     this.reward = reward;
     this.isCompleted = isCompleted;
   }

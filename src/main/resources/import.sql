@@ -1,0 +1,2 @@
+-- insert into user(email, password) values ('test1', 'test1');
+-- insert into user(email, password) values ('test2', 'test2');
