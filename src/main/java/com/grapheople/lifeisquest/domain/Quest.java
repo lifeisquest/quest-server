@@ -8,6 +8,7 @@ import org.joda.time.DateTime;
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 import org.joda.time.LocalDateTime;
@@ -19,8 +20,8 @@ import org.springframework.data.annotation.CreatedDate;
  */
 @Entity
 @ToString
-@Data
 @Table(name = "quest")
+@Data
 public class Quest {
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
@@ -29,10 +30,14 @@ public class Quest {
   private String body;
   private long writer_id;
   private String writer;
+  @Column(columnDefinition="float default 0")
   private float action_latitude;
+  @Column(columnDefinition="float default 0")
   private float action_longitude;
   private String action_location;
+  @Column(columnDefinition="float default 0")
   private float completion_latitude;
+  @Column(columnDefinition="float default 0")
   private float completion_longitude;
   private String completion_location;
   private String img1;
@@ -43,11 +48,15 @@ public class Quest {
   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyyMMdd", timezone="Asia/Seoul")
   private DateTime e_time;
   private int reward;
-  private int isCompleted;
+  @Column(columnDefinition="tinyint(1) default 0")
+  private boolean is_completed;
+  @Column(columnDefinition="tinyint(1) default 0")
+  private boolean is_simultaneous;
 
   private Quest() {}
 
-  public Quest(String title, String body, long writer_id, String writer, float action_latitude, float action_longitude, String action_location, float completion_latitude, float completion_longitude, String completion_location, String img1, String img2, DateTime s_time, DateTime e_time, int reward, int isCompleted) {
+
+  public Quest(String title, String body, long writer_id, String writer, float action_latitude, float action_longitude, String action_location, float completion_latitude, float completion_longitude, String completion_location, String img1, String img2, DateTime e_time, int reward) {
     this.title = title;
     this.body = body;
     this.writer_id = writer_id;
@@ -60,9 +69,7 @@ public class Quest {
     this.completion_location = completion_location;
     this.img1 = img1;
     this.img2 = img2;
-    this.s_time = s_time;
     this.e_time = e_time;
     this.reward = reward;
-    this.isCompleted = isCompleted;
   }
 }
