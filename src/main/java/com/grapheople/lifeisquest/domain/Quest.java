@@ -27,6 +27,7 @@ public class Quest {
   private long id;
   private String title;
   private String body;
+  private long writer_id;
   private String writer;
   private float action_latitude;
   private float action_longitude;
@@ -46,9 +47,10 @@ public class Quest {
 
   private Quest() {}
 
-  public Quest(String title, String body, String writer, float action_latitude, float action_longitude, String action_location, float completion_latitude, float completion_longitude, String completion_location, String img1, String img2, DateTime s_time, DateTime e_time, int reward, int isCompleted) {
+  public Quest(String title, String body, long writer_id, String writer, float action_latitude, float action_longitude, String action_location, float completion_latitude, float completion_longitude, String completion_location, String img1, String img2, DateTime s_time, DateTime e_time, int reward, int isCompleted) {
     this.title = title;
     this.body = body;
+    this.writer_id = writer_id;
     this.writer = writer;
     this.action_latitude = action_latitude;
     this.action_longitude = action_longitude;
